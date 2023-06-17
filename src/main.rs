@@ -311,10 +311,10 @@ fn generate_csv(rtts: &mut HashMap<CountryCode, Vec<(City, IP, Rtt)>>) -> String
     for (cc, min, median, average, max) in intermediate
     {
         csv += cc.as_str(); csv.push('\t');
-        csv += format!("{:.03}", min).as_str(); csv.push('\t');
-        csv += format!("{:.03}", median).as_str(); csv.push('\t');
-        csv += format!("{:.03}", average).as_str(); csv.push('\t');
-        csv += format!("{:.03}", max).as_str(); csv.push('\n');
+        csv += format!("{:.03}", min).replace('.', ",").as_str(); csv.push('\t');
+        csv += format!("{:.03}", median).replace('.', ",").as_str(); csv.push('\t');
+        csv += format!("{:.03}", average).replace('.', ",").as_str(); csv.push('\t');
+        csv += format!("{:.03}", max).replace('.', ",").as_str(); csv.push('\n');
     }
 
     csv
